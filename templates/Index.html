@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بني شمر ♧ | فخر التاريخ الأصيل</title>
+    <style>
+        :root {
+            --bg-body: #050607; /* أسود أعمق */
+            --bg-cards: rgba(12, 13, 15, 0.9);
+            --bg-glass: rgba(255, 255, 255, 0.02); /* زجاج شفاف جداً */
+            --primary: #38bdf8; /* أزرق نيون للتمييز */
+            --primary-glow: rgba(56, 189, 248, 0.4);
+            --flame-color: #fbbf24; /* لون الشعلة الأساسي */
+            --flame-glow: rgba(251, 191, 36, 0.6);
+            --text-main: #f1f5f9;
+            --text-muted: #8492a6;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --radius-md: 8px; /* حواف هندسية ناعمة */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center;
+        }
+
+        /* هيدر أسطوري واحترافي */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            height: 75px;
+            background: rgba(5, 6, 7, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #fff;
+            padding-right: 15px; /* محاذاة لليمين 1m */
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: 0.2s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 0; height: 2px;
+            background: var(--primary);
+            transition: 0.3s ease;
+        }
+
+        nav a:hover { color: #fff; }
+        nav a:hover::after { width: 100%; }
+
+        /* منطقة الهيرو */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 0 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -4px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 0%, #8492a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 40px rgba(255,255,255,0.15));
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+
+        /* --- الفانوس الزجاجي والشمعة المجسمة الأسطورية --- */
+        .lantern-container {
+            position: relative;
+            width: 200px; /* حجم كبير */
+            height: 320px; /* حجم كبير */
+            margin: 0 auto 100px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* الزجاج الشفاف بنسبة 85% */
+        .glass-enclosure {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.015); /* شفاف جداً */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px; /* حواف هندسية ناعمة */
+            z-index: 2;
+            box-shadow: 
+                inset 0 0 30px rgba(255, 255, 255, 0.01),
+                0 20px 50px rgba(0,0,0,0.6);
+            backdrop-filter: blur(1px); /* تأثير زجاجي خفيف جداً */
+        }
+
+        /* الشمعة المجسمة (مثل الإيموجي) */
+        .real-candle {
+            position: relative;
+            width: 50px;
+            height: 130px;
+            background: linear-gradient(180deg, #e2e8f0 0%, #fff 20%, #e2e8f0 80%, #cbd5e1 100%);
+            border-radius: 25px / 10px; /* شكل أسطواني مجسم */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            z-index: 1;
+            transform: translateY(40px); /* وضعها في الأسفل */
+        }
+
+        /* الجزء العلوي المذاب من الشمعة */
+        .real-candle::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: 0; width: 100%; height: 20px;
+            background: inherit;
+            border-radius: 50%; /* انحناء ذوبان الشمع */
+            box-shadow: inset 0 3px 5px rgba(0,0,0,0.1);
+        }
+
+        /* الفتيل (The Wick) */
+        .candle-wick {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 20px;
+            background: #1a1a1a; /* فتيل أسود */
+            border-radius: 2px;
+            z-index: 2;
+        }
+
+        /* الشعلة الأسطورية الواقعية (مثل الإيموجي) */
+        .candle-flame {
+            position: absolute;
+            top: -35px; /* فوق الفتيل */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 40px;
+            /* شكل قطرة الدمع الطبيعي */
+            background: radial-gradient(circle at 50% 100%, #fff 0%, #fff 10%, #fbbf24 40%, #ef4444 80%, transparent 100%);
+            border-radius: 50% 50% 20% 20% / 80% 80% 20% 20%;
+            animation: flame-flicker 0.1s ease-in-out infinite alternate;
+            filter: blur(0.8px);
+            z-index: 3;
+            box-shadow: 
+                0 0 20px #fbbf24, 
+                0 0 40px rgba(251, 191, 36, 0.7),
+                0 0 60px rgba(239, 68, 68, 0.5);
+        }
+
+        /* هالة ضوئية تنعكس على الزجاج */
+        .flame-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+            top: -50px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            animation: glow-pulse 2s infinite;
+        }
+
+        @keyframes flame-flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-1.5deg); }
+            100% { transform: translateX(-50%) scale(1.03) rotate(1.5deg); }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* تنسيق الشبكة للمعلومات */
+        .grid-section {
+            max-width: 1400px;
+            margin: 0 auto 120px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background-color: var(--bg-cards);
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0;
+            transform: translateY(25px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s ease;
+        }
+
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-card:hover {
+            border-color: rgba(255,255,255, 0.15);
+            background-color: #0c0d0f;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            transform: translateY(-8px);
+        }
+
+        .info-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* تنسيق المقالة الأسطورية */
+        #source {
+            max-width: 1000px;
+            margin: 0 auto 120px auto;
+            padding: 80px;
+            background: #08090a;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        #source h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -3px;
+            color: #fff;
+            margin-bottom: 50px;
+            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        #source p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 30px;
+            white-space: pre-line;
+        }
+
+        /* زخرفة مقالة فخمة (Drop Cap) */
+        #source p::first-letter {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+            float: right;
+            margin-left: 12px;
+            line-height: 1;
+        }
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background: #030405;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* التجاوب */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.3rem; }
+            nav { gap: 15px; }
+            nav a { font-size: 0.9rem; }
+            .hero h1 { font-size: 4rem; letter-spacing: -2px; }
+            .lantern-container { width: 150px; height: 250px; }
+            .real-candle { width: 40px; height: 100px; }
+            #source { padding: 40px; }
+            #source h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>بني شمر ♧</h1>
+        <nav>
+            <a href="#">الرئيسية</a>
+            <a href="#facts">المعرفة</a>
+            <a href="#source">المقالة</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>تاريخ عريق</h1>
+        <p>استكشف أمجاد وقيم قبيلة شمر، تاريخ أصيل يمتد عبر الجزيرة العربية وشعوبها، فخر الانتماء والمعرفة.</p>
+
+        <div class="lantern-container">
+            <div class="glass-enclosure">
+                <div class="flame-glow"></div>
+            </div>
+            <div class="real-candle">
+                <div class="candle-wick"></div>
+                <div class="candle-flame"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid-section" id="facts">
+    <div class="info-card" data-lazy>1- قبيلة شمر من أشهر القبائل العربية.</div>
+    <div class="info-card" data-lazy>2- أصلها يعود لقبيلة طيء.</div>
+    <div class="info-card" data-lazy>3- الموطن الأساسي حائل.</div>
+    <div class="info-card" data-lazy>4- معروفة بالكرم والشجاعة.</div>
+    <div class="info-card" data-lazy>5- لها وجود في السعودية، الأردن، فلسطين.</div>
+    <div class="info-card" data-lazy>6- فروعها متعددة وتشمل عبده، الأسلم، زوبع.</div>
+    <div class="info-card" data-lazy>7- لها تاريخ سياسي واجتماعي مهم.</div>
+    <div class="info-card" data-lazy>8- حافظت على تقاليدها وعاداتها.</div>
+    <div class="info-card" data-lazy>9- تمتلك قصص بطولية وشعراء مشهورين.</div>
+    <div class="info-card" data-lazy>10- اشتهرت بالفروسية والمشاركة بالحروب.</div>
+    <div class="info-card" data-lazy>11- بقيادة أسامة بن لؤي، خرجت قبيلة طيء من اليمن نحو شمال الجزيرة العربية حوالي سنة 115م.</div>
+    <div class="info-card" data-lazy>12- استولت طيء خلال هجرتها على جبلي أجا وسلمى من قبيلتي بني أسد وبني تميم.</div>
+    <div class="info-card" data-lazy>13- أطلق على هذين الجبلين لاحقًا اسم "جبل طيء"، ثم تغيّر الاسم في القرن الرابع عشر إلى "جبل شمر".</div>
+    <div class="info-card" data-lazy>14- استقرت طيء، التي عُرفت لاحقًا باسم شمر، في المنطقة وتنوعت أنماط حياتهم بين سكان المدن والبدو الرحل والمزارعين.</div>
+    <div class="info-card" data-lazy>15- الاختلافات في نمط الحياة لم تكن على أساس النسب بل على طبيعة العمل والمهارات.</div>
+    <div class="info-card" data-lazy>16- توسعت طيء شمالًا حتى وصلت إلى العراق ومدينة الحيرة.</div>
+    <div class="info-card" data-lazy>17- أوائل زعماء شمر كانا عرار وعمير من أسرة عبدة من ضيغم.</div>
+    <div class="info-card" data-lazy>18- في القرن السابع عشر غادر قسم كبير من شمر جبل شمر بقيادة آل جربا إلى العراق.</div>
+    <div class="info-card" data-lazy>19- استقر فرع شمر في الموصل وأصبح معقلهم الرئيسي في العراق.</div>
+    <div class="info-card" data-lazy>20- القبيلة في العراق انقسمت إلى فرعين: شمالي سني وجنوبي شيعي.</div>
+    <div class="info-card" data-lazy>21- شمر في الجزيرة العربية امتدت أراضيهم من حائل شمالًا حتى أطراف بادية الشام.</div>
+    <div class="info-card" data-lazy>22- كانت هناك منافسة تقليدية طويلة مع قبيلة عنزة.</div>
+    <div class="info-card" data-lazy>23- حائل كانت مركز منطقة جبل شمر وسكنت غالبية قبيلة شمر فيها.</div>
+    <div class="info-card" data-lazy>24- في القرن التاسع عشر تعاقبت على حكم حائل أسرتان: آل علي ثم آل رشيد.</div>
+    <div class="info-card" data-lazy>25- خلال الحرب الأهلية للدولة السعودية الثانية، تدخل أمراء حائل وسيطروا تدريجيًا على أجزاء واسعة من البلاد.</div>
+    <div class="info-card" data-lazy>26- بدو شمر شكلوا الجزء الأكبر من القوة العسكرية التي اعتمد عليها آل رشيد.</div>
+    <div class="info-card" data-lazy>27- أوائل القرن العشرين، عبدالعزيز آل سعود هزم آل رشيد وضم حائل سنة 1921.</div>
+    <div class="info-card" data-lazy>28- بعد سقوط آل رشيد، هاجر كثير من شمر إلى سوريا والعراق.</div>
+    <div class="info-card" data-lazy>29- فرع آل سبهان أعلن ولاءه لعبد العزيز آل سعود في الرياض.</div>
+    <div class="info-card" data-lazy>30- عبدالعزيز آل سعود تزوج من ابنة أحد شيوخ شمر وأنجبت له الملك عبدالله.</div>
+    <div class="info-card" data-lazy>31- معظم البدو تدريجيًا تخلو عن حياة الترحال وعيشوا حياة حضرية حديثة.</div>
+    <div class="info-card" data-lazy>32- لا يزال الكثير من أبناء شمر يحتفظون بهويتهم القبلية ويشاركون في المهرجانات الثقافية.</div>
+    <div class="info-card" data-lazy>33- شمر في العراق تقدر بأكثر من 1.5 مليون نسمة.</div>
+    <div class="info-card" data-lazy>34- بقيادة بني محمد (آل جربا)، شهدت القبيلة هجرة واسعة إلى العراق.</div>
+    <div class="info-card" data-lazy>35- معظم شمر في العراق تخلو عن حياة البداوة واستقروا في المدن الكبرى.</div>
+    <div class="info-card" data-lazy>36- منطقة الجزيرة الواقعة بين نهري دجلة والفرات كانت تحت سيطرة شمر بعد أن أزاحوا قبيلة العبيد.</div>
+    <div class="info-card" data-lazy>37- شمر الصايح كان فرع مستقل عن سلطة آل جربا.</div>
+    <div class="info-card" data-lazy>38- تتكون شمر من مجموعات مثل الزهيري والتويج في النجف.</div>
+    <div class="info-card" data-lazy>39- شمر أصبحت واحدة من أقوى القبائل في العراق وامتلكت مساحات واسعة من الأراضي.</div>
+    <div class="info-card" data-lazy>40- نفوذها تراجع بعد إسقاط الملكية عام 1958، ولكن رحبوا بحكم حزب البعث.</div>
+    <div class="info-card" data-lazy>41- بعد سقوط صدام حسين، تم اختيار غازي مشعل الياور رئيسًا مؤقتًا بإجماع.</div>
+    <div class="info-card" data-lazy>42- ابنه هو الشيخ الحالي مشايخ شمر في سوريا والعراق.</div>
+    <div class="info-card" data-lazy>43- شمر في سوريا منذ عشرينيات القرن العشرين وشاركوا في نزاعات مع شمر العراقية.</div>
+    <div class="info-card" data-lazy>44- في 1926 صاعد النزاع بين شمر السورية والعراقية ووصل إلى أعمال عنف.</div>
+    <div class="info-card" data-lazy>45- في 1959، دخل فرعي شمر في سوريا والعراق في تحالف مع حزب البعث السوري ضد العدو المشترك.</div>
+    <div class="info-card" data-lazy>46- الزعيم الحالي لشمر في سوريا هو الشيخ حميدي دهام الهادي.</div>
+    <div class="info-card" data-lazy>47- ابنه بندر الحميدي هو القائد العسكري لقوات الصناديد.</div>
+    <div class="info-card" data-lazy>48- الصناديد تأسست عام 2013 لحماية مصالح القبيلة ضد تنظيم الدولة.</div>
+    <div class="info-card" data-lazy>49- تعريف: شمر قبيلة عربية قحطانية طائية أصلها من حائل في نجد.</div>
+    <div class="info-card" data-lazy>50- تنتشر القبيلة أيضًا في العراق والكويت وسوريا والأردن واليمن وقطر والإمارات وأقطار أخرى.</div>
+    <div class="info-card" data-lazy>51- تكونت شمر من تكتل أفخاذها قبل خمسة قرون: زوبع (سنجارة)، الأسلم، عبده.</div>
+    <div class="info-card" data-lazy>52- النسب: شمر بن عبد بن جذيمة بن زهير بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء.</div>
+    <div class="info-card" data-lazy>53- رواية أخرى للنسب: شمر بن عبد جذيمة بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء.</div>
+    <div class="info-card" data-lazy>54- وفق الزركلي، الشمريون اليوم يتجمعون في ثلاث قبائل: سنجارة، أسلم، عبده.</div>
+    <div class="info-card" data-lazy>55- الملك امرؤ القيس الكندي نزل فيهم في الجاهلية.</div>
+    <div class="info-card" data-lazy>56- تقسيم الشمر: ثلاثة أقسام كبيرة: عبدة، الأسلم، زوبع.</div>
+    <div class="info-card" data-lazy>57- شمر لم تعرف كقبيلة مستقلة عن طيء إلا في القرن السابع الهجري.</div>
+    <div class="info-card" data-lazy>58- نشبت حرب بين قبائل شمر الثلاث وأمير بهيج بن ذبيان الزبيدي.</div>
+    <div class="info-card" data-lazy>59- رحل بهيج ومن معه إلى العراق، حيث توفي هناك.</div>
+    <div class="info-card" data-lazy>60- بعض القوى المنتصرة لم تؤسس حكم حضري وبقيت تعمل كقبائل بدو.</div>
+    <div class="info-card" data-lazy>61- كل شيخ يحكم فرع عشيرته فقط ولا يتعدى حدود منطقته.</div>
+    <div class="info-card" data-lazy>62- رغم هجرات كثيرة، بقيت قبيلة شمر ممثلة لقبيلة طيء في المنطقة.</div>
+    <div class="info-card" data-lazy>63- كل عشيرة من عشائر شمر انقسمت إلى قسم هاجر وقسم بقي في المنطقة.</div>
+    <div class="info-card" data-lazy>64- يحافظون على هويتهم القبلية القوية وولائهم لقبيلتهم.</div>
+    <div class="info-card" data-lazy>65- يشارك الكثير منهم في المهرجانات الثقافية لإحياء التراث والفنون الشعبية.</div>
+</div>
+
+
+    <section id="source">
+        <h2>أساس المعلومات والتاريخ</h2>
+        <p>  " التاريخ : بقيادة أسامة بن لؤي، خرجت قبيلة طيء من اليمن نحو شمال الجزيرة العربية حوالي سنة 115م، واستولت خلال هجرتها على جبلي أجا وسلمى من قبيلتي بني أسد وبني تميم. وأُطلق على هذين الجبلين لاحقًا اسم "جبل طيء"، ثم تغيّر الاسم في القرن الرابع عشر إلى "جبل شمر" بعد أن تغيّر اسم القبيلة نفسها.
+
+استقرت طيء، التي عُرفت لاحقًا باسم شمر، في تلك المنطقة، وتنوعت أنماط حياتهم؛ فكان منهم سكان المدن في حائل، ومنهم البدو الرحّل الرعاة ومربّو الإبل والخيول في نجد الشمالية، ومنهم المزارعون في المناطق الريفية حول حائل أو في الواحات الصحراوية القريبة. ولم تكن هذه الاختلافات قائمة على النسب أو التقسيمات العائلية، بل على طبيعة العمل والاهتمامات والمهارات، حتى إنه كان من المعتاد أن يعيش أفراد الأسرة الواحدة بأنماط حياة مختلفة.
+
+وبفضل قوتهم وصلاتهم القبلية مع السلالات اليمنية التي حكمت بلاد الشام (الغساسنة) والعراق (المناذرة)، توسعت طيء شمالًا حتى وصلت إلى العراق ومدينة الحيرة التي كانت عاصمة آنذاك. وتذكر الروايات الشفوية أن أوائل زعماء شمر، وهما عرار وعمير، كانوا من أسرة عبدة من ضيغم، وقد حكموا شمر من جبل شمر.
+
+وفي القرن السابع عشر، غادر قسم كبير من شمر جبل شمر بقيادة آل جربا، واتجهوا إلى العراق واستقروا هناك حتى وصلوا إلى مدينة الموصل في الشمال، والتي أصبحت معقلهم الرئيسي. وتُعد شمر اليوم من أكبر قبائل العراق، وتنقسم إلى فرعين جغرافيين لا يقومان على النسب؛ الفرع الشمالي المعروف بشمر الجربا وهو في الغالب سني، والفرع الجنوبي المعروف بشمر طوقة، وقد اعتنق المذهب الشيعي في القرن التاسع عشر، بعد استقراره في جنوب العراق.
+
+أما شمر الذين بقوا في الجزيرة العربية، فقد امتدت أراضيهم القبلية من حائل شمالًا حتى أطراف بادية الشام. وكانت بينهم منافسة تقليدية طويلة مع قبيلة عنزة التي سكنت المنطقة نفسها. وأصبحت حائل مركز منطقة جبل شمر، وكان يسكنها في الغالب أفراد مستقرون من شمر ومن يرتبط بهم. وخلال القرن التاسع عشر، تعاقبت على حكم المدينة أسرتان؛ بدأت بآل علي، ثم خلفهم آل رشيد.
+
+وخلال الحرب الأهلية التي شهدتها الدولة السعودية الثانية في أواخر القرن التاسع عشر، تدخل أمراء حائل من آل رشيد وسيطروا تدريجيًا على أجزاء واسعة من البلاد، حتى تمكنوا من دخول الرياض عام 1895 وطرد آل سعود إلى الكويت. وكان بدو شمر يشكلون الجزء الأكبر من القوة العسكرية التي اعتمد عليها آل رشيد.
+
+لكن في أوائل القرن العشرين، تمكن عبدالعزيز آل سعود وقواته من هزيمة آل رشيد، وانتهت حملته باستعادة حكم أسرته في الجزيرة العربية وضم حائل سنة 1921. وبعد سقوط آل رشيد، هاجر كثير من شمر إلى سوريا والعراق، بينما أعلن فرع آل سبهان ولاءه لعبد العزيز آل سعود في الرياض. كما تزوّج عبد العزيز آل سعود من ابنة أحد شيوخ شمر، وأنجبت له الملك عبدالله.
+
+ومع ترسيم الحدود الحديثة، تخلّى معظم البدو تدريجيًا عن حياة الترحال. ويعيش أغلب أبناء شمر اليوم حياة حضرية حديثة في السعودية والعراق، مع وجود فروع منهم في سوريا والأردن. ومع ذلك، ما تزال الغالبية تحتفظ بهويتها القبلية القوية وولائها لقبيلتها، ويشارك الكثير منهم في المهرجانات الثقافية لإحياء تراثهم والتعرّف على أنماط حياتهم القديمة، بما في ذلك الفنون الشعبية والرقصات التقليدية.
+
+العراق
+تُعد قبيلة شمر من أكبر القبائل العربية في العراق، إلى جانب قبيلة الجبور، إذ يزيد عدد أفرادها على 1.5 مليون نسمة. وبقيادة بني محمد، المعروفين باسم آل جربا، شهدت القبيلة هجرة واسعة إلى العراق. وقد تخلى معظم أفراد شمر هناك عن حياة البداوة واستقروا في المدن الكبرى، خصوصًا في منطقة الجزيرة، وهي السهل الواقع بين نهري دجلة والفرات من بغداد إلى الموصل.
+
+وقد تسببت موجات الجفاف في عدة هجرات لشمر إلى العراق، الذي كان عدد سكانه، بحسب الإحصاء العثماني عند ضمه، لا يتجاوز 1.5 مليون نسمة. واستطاعت شمر السيطرة على منطقة الجزيرة بعد أن أزاحت قبيلة العبيد منها. ووفقًا للشيخ عبدالله حميد الياور، ابن شيخ شمر، يُقدَّر عدد أفراد القبيلة في العراق بأكثر من 1.5 مليون نسمة.
+
+ويُعد شمر الصايح اتحادًا قبليًا من قبائل شمر، وهو الفرع الذي كان مستقلًا عن سلطة آل جربا. كما تتكون شمر من مجموعات مثل الزهيري والتويج في النجف.
+
+وأصبحت شمر واحدة من أقوى القبائل في العراق، إذ امتلكت مساحات واسعة من الأراضي، وقدمت دعمًا قويًا للنظام الملكي الهاشمي. لكن نفوذها تراجع بعد إسقاط الملكية عام 1958 على يد عبد الكريم قاسم، ومع ذلك رحّبت بحكم حزب البعث.
+
+وبعد سقوط نظام صدام حسين، تم اختيار غازي مشعل الياور، المنتمي إلى عشيرة آل جربا، رئيسًا مؤقتًا بإجماع. ويُعد عمه شيخ مشايخ شمر في الوقت الحالي.
+
+سوريا
+توجد قبيلة شمر في سوريا منذ عشرينيات القرن العشرين على الأقل، حين تصاعد التنافس بين شمر السورية والعراقية إلى أعمال عنف، وقد سُجلت هذه الأحداث من قبل عصبة الأمم عام 1926. ففي أواخر مارس 1926، شنّ شيخ شمر في سوريا، دهام الهادي، وهو أبرز شيوخ شمر هناك، هجومًا على عجيل الياور، أحد شيوخ شمر في العراق.
+
+لكن في أبريل 1959، أفادت تقارير جهاز خدمة معلومات البث الخارجي التابع لوكالة المخابرات المركزية أن فرعي شمر في سوريا والعراق تمكّنا من تجاوز خلافاتهما، حيث دخلا في تحالف مع حزب البعث السوري ضد عدو مشترك.
+
+والزعيم الحالي لشمر في سوريا هو الشيخ حميدي دهام الهادي. أما ابنه بندر الحميدي، فهو القائد العسكري لقوات الصناديد، وهي ميليشيا من شمر تأسست عام 2013 بهدف حماية مصالح القبيلة، خاصة في مواجهة تنظيم الدولة الإسلامية." التعريف : " شـمّـر قبيلة عربية قحطانية طائية أصلها من حائل في نجد. تنتشر القبيلة أيضاً في عدة أقطار مثل العراق والكويت وسوريا والأردن اليمن وقطر والإمارات، إضافة إلى أقطار أخرى. تكونت قبيلة شمر من تكتل أفخاذها قبل خمسة قرون وهي: قبائل زوبع (سنجارة) والأسلم وعبدة من طيء، تنحدر القبيلة من طيء التي كانت تسكن في حائل، أما قبيلة طيء الموجودة في العراق وسوريا فهي قبيلة مستقلة عن شمر والرابط هو النسب فقط." النسب : "اختلف في سرد نسب شمر على قولين هما:
+
+شمر بن عبد بن جذيمة بن زهير بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء، وهو قول ابن الكلبي وابن ماكولا.
+شمر بن عبد جذيمة بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء، وهو قول ابن الأثير.
+قال الزركلي: «شمر بن عبد بن جذيمة بن ثعلبة بن سلامان، من طيئ: جد جاهلي. ينسب إليه الشمريون، وهم اليوم بطون كثيرة في البلاد العربية السعودية، تجتمع في ثلاث قبائل: سنجارة، وأسلم، وعبدة». ويروى أن الملك امرؤ القيس الكندي نزل فيهم في الجاهلية، وقال:
+
+هل أنا ماش بين شوط وحية
+وهل أنا لاقي حي قيس بن شمرا" اقسامها : " وتقسم قبيلة شمر إلى ثلاثة أقسام كبيرة متمثلة في عبدة والأسلم وزوبع. ولم تعرف شمر كقبيلة مستقلة عن طيء إلا في القرن السابع الهجري وذلك في حادثة قلبت الموازين في نجد كلها؛ حيث نشبت حرب بين قبائل شمر الثلاث (عبدة والأسلم وزوبع) وبين أمير يدعى بهيج بن ذبيان الزبيدي الذي كان مسيطراً على المنطقة وقبائلها وكانت عاصمته عقدة واستطاعت قبائل شمر الإطاحة بالحاكم بهيج وطرده من ملكه. ورحل بهيج ومن معه من طيء إلى الجزيرة بالعراق، وبعد أن وصل هناك توفي بهيج، وسبب الوفاة طعنة خلال هجوم شمر عليه. وبعد وفاته أرادت القبيلة الانتقام لموته فرجعت إلى جبل طيء، وكانت جعفر في ذلك الوقت في نخيلهم في البقعاء، وعندما أخذوا محصولهم من التمر واتجهوا إلى بلدتهم حائل في عدة قوافل، فكمنت لهم جماعة بهيج عند الخاصرة بين البقعاء وحائل، ودار القتال بين الطرفين وقتل من الجعفر تسعين قتيلا، فبقي أبناء القتلى في رعاية أبناء عمهم من الجعفر الذين لم يحضروا المعركة، وسموا بعدها باليتمان. ومع ذلك فإن تلك القوى المنتصرة لم تؤسس حكما حضريا وبقيت المجموعات المنتصرة تحكم بشكل قبائل بدو، وكل شيخ يحكم فرع عشيرته ولا يتعدى الشيخ حدود منطقته.
+
+على الرغم من هجرة قبائل كثيرة متفرعة من طيء إلى العراق والشام ومصر فقد ظلت قبيلة (شمر) كممثلة للقبيلة (طيء) واستقلت بتسميتها وبقيت عشائر (شمر) في المنطقة رغم هجرة أجزاء كبيرة منها إلى العراق والشام وإفريقيا. حيث نجد كل عشيرة من عشائر شمر قد انقسمت إلى قسمين: قسم هاجر وقسم بقي في المنطقة حتى اليوم."
+        </p>
+    </section>
+
+    <footer>
+        <p>© 2026 بني شمر ♧ - واجهة برمجية متطورة وفخر تاريخي أسطوري.</p>
+    </footer>
+
+    <script>
+        // أنيميشن ظهور البطاقات عند التمرير
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.info-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
