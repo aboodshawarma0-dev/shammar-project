@@ -2,329 +2,298 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>بني شمر ♧ | فخر التاريخ الأصيل</title>
     <style>
         :root {
-            --bg-body: #050607; /* أسود أعمق */
-            --bg-cards: rgba(12, 13, 15, 0.9);
-            --bg-glass: rgba(255, 255, 255, 0.02); /* زجاج شفاف جداً */
-            --primary: #38bdf8; /* أزرق نيون للتمييز */
-            --primary-glow: rgba(56, 189, 248, 0.4);
-            --flame-color: #fbbf24; /* لون الشعلة الأساسي */
-            --flame-glow: rgba(251, 191, 36, 0.6);
-            --text-main: #f1f5f9;
+            --bg-body: #010102; /* أسود مطلق لعمق الإضاءة */
+            --bg-cards: rgba(16, 17, 20, 0.9);
+            --primary: #38bdf8; 
+            --primary-glow: rgba(56, 189, 248, 0.5);
+            --flame-color: #fbbf24;
+            --text-main: #f8fafc;
             --text-muted: #8492a6;
             --border-color: rgba(255, 255, 255, 0.08);
-            --radius-md: 8px; /* حواف هندسية ناعمة */
+            
+            /* ابتكار: تدرج نيون للزر العائم */
+            --btn-gradient: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
         }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             overflow-x: hidden;
-            line-height: 1.8;
+            line-height: 1.6;
+            /* خلفية هادئة جداً لتركيز الضوء على الشمعة */
             background-image: 
-                linear-gradient(var(--border-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-            background-size: 60px 60px;
-            background-position: center;
+                radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.02), transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(251, 191, 36, 0.02), transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* هيدر أسطوري واحترافي */
+        /* هيدر متجاوب بظلال خفيفة */
         header {
             position: fixed;
             top: 0; width: 100%;
-            height: 75px;
-            background: rgba(5, 6, 7, 0.95);
-            backdrop-filter: blur(12px);
+            height: 70px;
+            background: rgba(1, 1, 2, 0.85);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 6%;
-            z-index: 1000;
-            box-sizing: border-box;
+            z-index: 10000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5); /* ضلال خفيفة للهيدر */
         }
 
         header h1 {
+            font-size: 1.5rem;
             margin: 0;
-            font-size: 1.6rem;
-            font-weight: 900;
-            letter-spacing: -1px;
             color: #fff;
-            padding-right: 15px; /* محاذاة لليمين 1m */
-            text-shadow: 0 0 20px var(--primary-glow);
+            text-shadow: 0 0 15px var(--primary-glow);
         }
 
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
+        nav { display: flex; gap: 25px; }
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
-            transition: 0.2s ease;
-            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
         }
+        nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px; left: 0;
-            width: 0; height: 2px;
-            background: var(--primary);
-            transition: 0.3s ease;
-        }
-
-        nav a:hover { color: #fff; }
-        nav a:hover::after { width: 100%; }
-
-        /* منطقة الهيرو */
+        /* منطقة البطل - Hero */
         .hero {
-            height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 0 20px;
+            padding: 110px 20px 50px;
             position: relative;
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 7rem);
+            font-size: clamp(3.5rem, 15vw, 7rem);
             font-weight: 900;
-            letter-spacing: -4px;
-            margin-bottom: 20px;
+            margin: 0;
             background: linear-gradient(180deg, #fff 0%, #8492a6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 40px rgba(255,255,255,0.15));
+            filter: drop-shadow(0 0 40px rgba(255,255,255,0.1));
         }
 
-        .hero p {
-            font-size: 1.4rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin-bottom: 60px;
-            font-weight: 400;
-        }
-
-        /* --- الفانوس الزجاجي والشمعة المجسمة الأسطورية --- */
+        /* --- ابتكار الشمعة الأسطورية والفانوس --- */
         .lantern-container {
             position: relative;
-            width: 200px; /* حجم كبير */
-            height: 320px; /* حجم كبير */
-            margin: 0 auto 100px auto;
+            width: 200px;
+            height: 320px;
+            margin-top: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
         }
 
-        /* الزجاج الشفاف بنسبة 85% */
+        /* ابتكار: الفانوس الزجاجي بظلال وإضاءة مركزة */
         .glass-enclosure {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.015); /* شفاف جداً */
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px; /* حواف هندسية ناعمة */
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(1px);
             z-index: 2;
+            /* اضاءة وظلال مبتكرة للفانوس */
             box-shadow: 
-                inset 0 0 30px rgba(255, 255, 255, 0.01),
-                0 20px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(1px); /* تأثير زجاجي خفيف جداً */
+                inset 0 0 50px rgba(251, 191, 36, 0.08), /* توهج داخلي ذهبي */
+                0 30px 60px rgba(0,0,0,0.9),              /* ضلال خارجية عميقة */
+                0 0 100px rgba(251, 191, 36, 0.05);       /* هالة ضوئية خارجية خفيفة */
         }
 
-        /* الشمعة المجسمة (مثل الإيموجي) */
+        /* الشمعة المجسمة بظلال ذاتية */
         .real-candle {
             position: relative;
-            width: 50px;
-            height: 130px;
+            width: 55px;
+            height: 140px;
             background: linear-gradient(180deg, #e2e8f0 0%, #fff 20%, #e2e8f0 80%, #cbd5e1 100%);
-            border-radius: 25px / 10px; /* شكل أسطواني مجسم */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border-radius: 25px / 10px;
+            box-shadow: 
+                inset 0 -15px 20px rgba(0,0,0,0.3), /* ضلال ذاتية أسفل الشمعة */
+                inset 0 15px 20px rgba(255,255,255,0.3), /* اضاءة أعلى الشمعة */
+                0 15px 30px rgba(0,0,0,0.7);          /* ضلال على أرضية الفانوس */
             z-index: 1;
-            transform: translateY(40px); /* وضعها في الأسفل */
+            transform: translateY(50px);
         }
 
-        /* الجزء العلوي المذاب من الشمعة */
-        .real-candle::before {
-            content: '';
-            position: absolute;
-            top: -5px; left: 0; width: 100%; height: 20px;
-            background: inherit;
-            border-radius: 50%; /* انحناء ذوبان الشمع */
-            box-shadow: inset 0 3px 5px rgba(0,0,0,0.1);
-        }
-
-        /* الفتيل (The Wick) */
+        /* ابتكار: الفتيل المتوهج */
         .candle-wick {
             position: absolute;
-            top: -15px;
-            left: 50%;
+            top: -12px; left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 20px;
-            background: #1a1a1a; /* فتيل أسود */
+            width: 4px; height: 18px;
+            background: #111;
             border-radius: 2px;
-            z-index: 2;
+            box-shadow: 0 0 12px var(--flame-color); /* توهج الفتيل */
         }
 
-        /* الشعلة الأسطورية الواقعية (مثل الإيموجي) */
+        /* الشعلة الأسطورية بأنيميشن واقعي */
         .candle-flame {
             position: absolute;
-            top: -35px; /* فوق الفتيل */
-            left: 50%;
+            top: -45px; left: 50%;
             transform: translateX(-50%);
-            width: 24px;
-            height: 40px;
-            /* شكل قطرة الدمع الطبيعي */
+            width: 26px; height: 48px;
             background: radial-gradient(circle at 50% 100%, #fff 0%, #fff 10%, #fbbf24 40%, #ef4444 80%, transparent 100%);
             border-radius: 50% 50% 20% 20% / 80% 80% 20% 20%;
             animation: flame-flicker 0.1s ease-in-out infinite alternate;
             filter: blur(0.8px);
             z-index: 3;
+            /* اضاءة الشعلة القوية */
             box-shadow: 
-                0 0 20px #fbbf24, 
-                0 0 40px rgba(251, 191, 36, 0.7),
-                0 0 60px rgba(239, 68, 68, 0.5);
+                0 0 25px #fbbf24, 
+                0 0 50px rgba(251, 191, 36, 0.6),
+                0 0 80px rgba(239, 68, 68, 0.4);
         }
 
-        /* هالة ضوئية تنعكس على الزجاج */
-        .flame-glow {
+        /* ابتكار: هالة ضوئية تنبض خلف الفانوس */
+        .flame-glow-back {
             position: absolute;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
-            top: -50px; left: 50%;
-            transform: translateX(-50%);
-            z-index: 4;
-            animation: glow-pulse 2s infinite;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1; /* خلف كل شيء */
+            animation: glow-pulse 3s infinite ease-in-out;
         }
 
         @keyframes flame-flicker {
-            0% { transform: translateX(-50%) scale(1) rotate(-1.5deg); }
-            100% { transform: translateX(-50%) scale(1.03) rotate(1.5deg); }
+            0% { transform: translateX(-50%) scale(1) rotate(-1.2deg); }
+            100% { transform: translateX(-50%) scale(1.04) rotate(1.2deg); }
         }
 
         @keyframes glow-pulse {
-            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
 
-        /* تنسيق الشبكة للمعلومات */
+        /* --- ابتكار: UI الزر العائم الجديد --- */
+        .rights-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            padding: 16px 28px;
+            background: var(--btn-gradient); /* تدرج نيون */
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            z-index: 100000; /* قيمة عالية جداً لضمان الظهور */
+            /* اضاءة نيون وحواف زجاجية */
+            box-shadow: 
+                0 10px 25px rgba(56, 189, 248, 0.4), /* ضلال ملونة */
+                0 0 15px rgba(56, 189, 248, 0.2),    /* اضاءة خفيفة */
+                inset 0 2px 2px rgba(255,255,255,0.4); /* حافة زجاجية علوية */
+            
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* أنيميشن نبضي هادئ للزر */
+            animation: btn-float 2.5s infinite ease-in-out;
+        }
+
+        .rights-btn:hover {
+            transform: translateY(-8px) scale(1.05); /* حركة للأعلى */
+            box-shadow: 
+                0 15px 35px rgba(56, 189, 248, 0.6),
+                0 0 25px rgba(56, 189, 248, 0.4);
+        }
+
+        .rights-btn:active { transform: translateY(-4px) scale(0.98); }
+
+        @keyframes btn-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* الشبكة المتجاوبة لكل الأبعاد بضلال فقط */
         .grid-section {
-            max-width: 1400px;
-            margin: 0 auto 120px auto;
-            padding: 0 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 30px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 20px;
         }
 
         .info-card {
-            background-color: var(--bg-cards);
+            background: var(--bg-cards);
             border: 1px solid var(--border-color);
-            padding: 35px;
-            border-radius: var(--radius-md);
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #cbd5e1;
             opacity: 0;
-            transform: translateY(25px);
-            position: relative;
-            overflow: hidden;
+            transform: translateY(20px);
+            transition: 0.4s ease;
+            display: flex;
+            align-items: center;
+            min-height: 90px;
+            /* ابتكار: ضلال عميقة لتعطي عمقاً للبطاقات */
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.6), /* ضلال ناعمة عميقة */
+                inset 0 0 1px rgba(255,255,255,0.05); /* حافة داخلية خفيفة جداً */
         }
 
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s ease;
-        }
-
-        .info-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .info-card.visible { opacity: 1; transform: translateY(0); }
 
         .info-card:hover {
-            border-color: rgba(255,255,255, 0.15);
-            background-color: #0c0d0f;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: #1a1b1f;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* زيادة الضلال عند الهوفر */
         }
 
-        .info-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        /* تنسيق المقالة الأسطورية */
         #source {
-            max-width: 1000px;
-            margin: 0 auto 120px auto;
-            padding: 80px;
-            background: #08090a;
-            border-radius: var(--radius-md);
+            max-width: 950px;
+            margin: 80px auto;
+            padding: 50px 30px;
+            background: rgba(10, 11, 13, 0.6);
+            border-radius: 18px;
             border: 1px solid var(--border-color);
-            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7); /* ضلال كبيرة للمقالة */
         }
 
-        #source h2 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: -3px;
-            color: #fff;
-            margin-bottom: 50px;
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
-        }
-
-        #source p {
-            color: #cbd5e1;
-            font-size: 1.2rem;
-            line-height: 2;
-            margin-bottom: 30px;
-            white-space: pre-line;
-        }
-
-        /* زخرفة مقالة فخمة (Drop Cap) */
-        #source p::first-letter {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--primary);
-            float: right;
-            margin-left: 12px;
-            line-height: 1;
-        }
+        #source h2 { font-size: 3rem; color: #fff; text-shadow: 0 0 15px var(--primary-glow); }
 
         footer {
-            padding: 60px 20px;
+            padding: 50px;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            background: #030405;
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 0.9rem;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.3); /* ضلال خفيفة للفوتر */
         }
 
-        /* التجاوب */
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.3rem; }
+        /* ميديا كويري للجوال */
+        @media (max-width: 480px) {
+            header { padding: 0 20px; }
+            header h1 { font-size: 1.2rem; }
             nav { gap: 15px; }
             nav a { font-size: 0.9rem; }
-            .hero h1 { font-size: 4rem; letter-spacing: -2px; }
-            .lantern-container { width: 150px; height: 250px; }
-            .real-candle { width: 40px; height: 100px; }
-            #source { padding: 40px; }
-            #source h2 { font-size: 2.2rem; }
+            .grid-section { grid-template-columns: 1fr; padding: 0 20px; }
+            .hero h1 { font-size: 3rem; }
+            .lantern-container { width: 170px; height: 280px; }
+            .real-candle { width: 45px; height: 120px; }
+            .rights-btn { padding: 14px 24px; font-size: 0.9rem; bottom: 20px; left: 20px; }
         }
     </style>
 </head>
@@ -333,28 +302,28 @@
     <header>
         <h1>بني شمر ♧</h1>
         <nav>
-            <a href="#">الرئيسية</a>
+            <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})">الرئيسية</a>
             <a href="#facts">المعرفة</a>
             <a href="#source">المقالة</a>
         </nav>
     </header>
 
+    <button class="rights-btn" onclick="showRights()">تنبيه الملكية ⚖️</button>
+
     <section class="hero">
         <h1>تاريخ عريق</h1>
-        <p>استكشف أمجاد وقيم قبيلة شمر، تاريخ أصيل يمتد عبر الجزيرة العربية وشعوبها، فخر الانتماء والمعرفة.</p>
+        <p style="color: var(--text-muted); max-width: 650px; font-size: 1.1rem; margin-top: 10px;">استكشف أمجاد وقيم قبيلة شمر، تاريخ أصيل يمتد عبر الجزيرة العربية وشعوبها.</p>
 
         <div class="lantern-container">
-            <div class="glass-enclosure">
-                <div class="flame-glow"></div>
-            </div>
-            <div class="real-candle">
+            <div class="glass-enclosure"></div>
+            <div class="flame-glow-back"></div> <div class="real-candle">
                 <div class="candle-wick"></div>
                 <div class="candle-flame"></div>
             </div>
         </div>
     </section>
 
-    <div class="grid-section" id="facts">
+   <div class="grid-section" id="facts">
     <div class="info-card" data-lazy>1- قبيلة شمر من أشهر القبائل العربية.</div>
     <div class="info-card" data-lazy>2- أصلها يعود لقبيلة طيء.</div>
     <div class="info-card" data-lazy>3- الموطن الأساسي حائل.</div>
@@ -421,11 +390,46 @@
     <div class="info-card" data-lazy>64- يحافظون على هويتهم القبلية القوية وولائهم لقبيلتهم.</div>
     <div class="info-card" data-lazy>65- يشارك الكثير منهم في المهرجانات الثقافية لإحياء التراث والفنون الشعبية.</div>
 </div>
-
+>
 
     <section id="source">
         <h2>أساس المعلومات والتاريخ</h2>
-        <p>  " التاريخ : بقيادة أسامة بن لؤي، خرجت قبيلة طيء من اليمن نحو شمال الجزيرة العربية حوالي سنة 115م، واستولت خلال هجرتها على جبلي أجا وسلمى من قبيلتي بني أسد وبني تميم. وأُطلق على هذين الجبلين لاحقًا اسم "جبل طيء"، ثم تغيّر الاسم في القرن الرابع عشر إلى "جبل شمر" بعد أن تغيّر اسم القبيلة نفسها.
+        <p>
+        
+شـمّـر قبيلة عربية قحطانية طائية أصلها من حائل في نجد. تنتشر القبيلة أيضاً في عدة أقطار مثل العراق والكويت وسوريا والأردن اليمن وقطر والإمارات، إضافة إلى أقطار أخرى. تكونت قبيلة شمر من تكتل أفخاذها قبل خمسة قرون وهي: قبائل زوبع (سنجارة) والأسلم وعبدة من طيء، تنحدر القبيلة من طيء التي كانت تسكن في حائل، أما قبيلة طيء الموجودة في العراق وسوريا فهي قبيلة مستقلة عن شمر والرابط هو النسب فقط.
+
+شمّر
+علم إمارة جبل شمر كما وصفه الرَّحالة الإيطالي كارلو غوارماني في سنة 1280 ه‍ـ.[1][2]
+علم إمارة جبل شمر كما وصفه الرَّحالة الإيطالي كارلو غوارماني في سنة 1280 ه‍ـ.
+معلومات القبيلة
+البلد
+ السعودية، العراق،
+ الكويت،  الأردن،  عربستان ،  قطر،  الإمارات العربية المتحدة،  سوريا،  البحرين،  تركيا،  فلسطين،
+
+ ليبيا
+المكان
+المشرق العربي
+العرقية
+عرب
+الديانة
+الإسلام
+النسبة
+طيء
+الشهرة
+الطنايا، السناعيس، أهل اللحيسة، الغلباء، سلايل طيء، زينين المحازم.
+تعديل مصدري - تعديل طالع توثيق القالب
+نسب قبيلة شمر
+اختلف في سرد نسب شمر على قولين هما:
+
+شمر بن عبد بن جذيمة بن زهير بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء، وهو قول ابن الكلبي وابن ماكولا.
+شمر بن عبد جذيمة بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء، وهو قول ابن الأثير.
+قال الزركلي: «شمر بن عبد بن جذيمة بن ثعلبة بن سلامان، من طيئ: جد جاهلي. ينسب إليه الشمريون، وهم اليوم بطون كثيرة في البلاد العربية السعودية، تجتمع في ثلاث قبائل: سنجارة، وأسلم، وعبدة». ويروى أن الملك امرؤ القيس الكندي نزل فيهم في الجاهلية، وقال:
+
+هل أنا ماش بين شوط وحية
+وهل أنا لاقي حي قيس بن شمرا
+أقسام قبيلة شمر وحكم الجبل
+تاريخ
+بقيادة أسامة بن لؤي، خرجت قبيلة طيء من اليمن نحو شمال الجزيرة العربية حوالي سنة 115م، واستولت خلال هجرتها على جبلي أجا وسلمى من قبيلتي بني أسد وبني تميم. وأُطلق على هذين الجبلين لاحقًا اسم "جبل طيء"، ثم تغيّر الاسم في القرن الرابع عشر إلى "جبل شمر" بعد أن تغيّر اسم القبيلة نفسها.
 
 استقرت طيء، التي عُرفت لاحقًا باسم شمر، في تلك المنطقة، وتنوعت أنماط حياتهم؛ فكان منهم سكان المدن في حائل، ومنهم البدو الرحّل الرعاة ومربّو الإبل والخيول في نجد الشمالية، ومنهم المزارعون في المناطق الريفية حول حائل أو في الواحات الصحراوية القريبة. ولم تكن هذه الاختلافات قائمة على النسب أو التقسيمات العائلية، بل على طبيعة العمل والاهتمامات والمهارات، حتى إنه كان من المعتاد أن يعيش أفراد الأسرة الواحدة بأنماط حياة مختلفة.
 
@@ -457,29 +461,31 @@
 
 لكن في أبريل 1959، أفادت تقارير جهاز خدمة معلومات البث الخارجي التابع لوكالة المخابرات المركزية أن فرعي شمر في سوريا والعراق تمكّنا من تجاوز خلافاتهما، حيث دخلا في تحالف مع حزب البعث السوري ضد عدو مشترك.
 
-والزعيم الحالي لشمر في سوريا هو الشيخ حميدي دهام الهادي. أما ابنه بندر الحميدي، فهو القائد العسكري لقوات الصناديد، وهي ميليشيا من شمر تأسست عام 2013 بهدف حماية مصالح القبيلة، خاصة في مواجهة تنظيم الدولة الإسلامية." التعريف : " شـمّـر قبيلة عربية قحطانية طائية أصلها من حائل في نجد. تنتشر القبيلة أيضاً في عدة أقطار مثل العراق والكويت وسوريا والأردن اليمن وقطر والإمارات، إضافة إلى أقطار أخرى. تكونت قبيلة شمر من تكتل أفخاذها قبل خمسة قرون وهي: قبائل زوبع (سنجارة) والأسلم وعبدة من طيء، تنحدر القبيلة من طيء التي كانت تسكن في حائل، أما قبيلة طيء الموجودة في العراق وسوريا فهي قبيلة مستقلة عن شمر والرابط هو النسب فقط." النسب : "اختلف في سرد نسب شمر على قولين هما:
+والزعيم الحالي لشمر في سوريا هو الشيخ حميدي دهام الهادي. أما ابنه بندر الحميدي، فهو القائد العسكري لقوات الصناديد، وهي ميليشيا من شمر تأسست عام 2013 بهدف حماية مصالح القبيلة، خاصة في مواجهة تنظيم الدولة الإسلامية.
 
-شمر بن عبد بن جذيمة بن زهير بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء، وهو قول ابن الكلبي وابن ماكولا.
-شمر بن عبد جذيمة بن ثعلبة بن سلامان بن ثعل بن عمرو بن الغوث بن طيء، وهو قول ابن الأثير.
-قال الزركلي: «شمر بن عبد بن جذيمة بن ثعلبة بن سلامان، من طيئ: جد جاهلي. ينسب إليه الشمريون، وهم اليوم بطون كثيرة في البلاد العربية السعودية، تجتمع في ثلاث قبائل: سنجارة، وأسلم، وعبدة». ويروى أن الملك امرؤ القيس الكندي نزل فيهم في الجاهلية، وقال:
+إمارة جبل شمر
+في عام 905هـ وصل لرئاسة عشيرة عبدة الأمير علي الكبير بن عطية آل جعفر والذي استطاع تأسيس أول حكم مركزي حضري في مدينة حائل وعلى الرغم من عظمة إنجازه، إلا أن سلطته لم تكن على كامل جبل شمر بل بقيت في إطار محدود، وحافظ بقية شيوخ القبائل من شمر على قوتهم وسلطتهم في قبائلهم واستمر الحال إلى أن استقر الأمر لـآل علي بوصول الأمير محمد بن عيسى آل علي الذي لقب بـ ((الأشمل)) لشمول سلطته كامل جبل شمر وشمال نجد بل وتبلورت في عهده هذه الإمارة التي أصبحت مرهوبة الجانب ويحسب لها ألف حساب وتعتبر الإمارة الأقدم في نجد ولم يستدل لوجود إمارة قبل هذه الإمارة وهذا بحسب الروايات المتواترة والمحفوظة في صدور رواة القبائل ومؤرخيها.
 
-هل أنا ماش بين شوط وحية
-وهل أنا لاقي حي قيس بن شمرا" اقسامها : " وتقسم قبيلة شمر إلى ثلاثة أقسام كبيرة متمثلة في عبدة والأسلم وزوبع. ولم تعرف شمر كقبيلة مستقلة عن طيء إلا في القرن السابع الهجري وذلك في حادثة قلبت الموازين في نجد كلها؛ حيث نشبت حرب بين قبائل شمر الثلاث (عبدة والأسلم وزوبع) وبين أمير يدعى بهيج بن ذبيان الزبيدي الذي كان مسيطراً على المنطقة وقبائلها وكانت عاصمته عقدة واستطاعت قبائل شمر الإطاحة بالحاكم بهيج وطرده من ملكه. ورحل بهيج ومن معه من طيء إلى الجزيرة بالعراق، وبعد أن وصل هناك توفي بهيج، وسبب الوفاة طعنة خلال هجوم شمر عليه. وبعد وفاته أرادت القبيلة الانتقام لموته فرجعت إلى جبل طيء، وكانت جعفر في ذلك الوقت في نخيلهم في البقعاء، وعندما أخذوا محصولهم من التمر واتجهوا إلى بلدتهم حائل في عدة قوافل، فكمنت لهم جماعة بهيج عند الخاصرة بين البقعاء وحائل، ودار القتال بين الطرفين وقتل من الجعفر تسعين قتيلا، فبقي أبناء القتلى في رعاية أبناء عمهم من الجعفر الذين لم يحضروا المعركة، وسموا بعدها باليتمان. ومع ذلك فإن تلك القوى المنتصرة لم تؤسس حكما حضريا وبقيت المجموعات المنتصرة تحكم بشكل قبائل بدو، وكل شيخ يحكم فرع عشيرته ولا يتعدى الشيخ حدود منطقته.
+انضمام آل علي إلى آل سعود
+بعد انتشار دعوة الشيخ محمد بن عبد الوهاب والتي كانت مدعومة من قبل الدولة السعودية الأولى، انضمت حائل بعهد الأمير محمد بن عبد المحسن آل علي، تحت راية الحكم السعودي في الدرعية وسمي الأمير محمد بن عبد المحسن آل علي أمير المسلمين بعد الانضمام إلى السعوديين، وبقي هذا الوضع طيلة فترة حكم محمد بن عبد المحسن وبسبب هذا اغتيل على يد الأتراك في مقصورة الداحس وسط حائل وقد دفن جثمانه في مقبرة الزبارة في حائل أما رأسه فقد أرسل إلى مقر السلطنة العثمانية في إسطنبول بتركيا، وقد كتب على نصب قبره (محمد بن علي أمير المسلمين وأسكنه دار السلم والسلام)
 
-على الرغم من هجرة قبائل كثيرة متفرعة من طيء إلى العراق والشام ومصر فقد ظلت قبيلة (شمر) كممثلة للقبيلة (طيء) واستقلت بتسميتها وبقيت عشائر (شمر) في المنطقة رغم هجرة أجزاء كبيرة منها إلى العراق والشام وإفريقيا. حيث نجد كل عشيرة من عشائر شمر قد انقسمت إلى قسمين: قسم هاجر وقسم بقي في المنطقة حتى اليوم."
+سلالة آل الرشيد
+بعد اغتيال الأمير محمد بن عبد المحسن آل علي جلس على عرش الإمارة شقيقه الأمير صالح بن عبد المحسن في عام 1818 م ولكن في عام 1820 م تولى عبد الله العلي الرشيد إنشاء ما يمكن تسميته بـ المعارضة، لحكم آل علي في حائل، فقام حاكم حائل آنذاك صالح بن عبد المحسن آل علي بنفيه إلى العراق على الفور. وبعد فترة من سقوط الدولة السعودية الأولى، عاد آل سعود بتأسيس الدولة السعودية الثانية وكانت الدولة السعودية الثانية ضعيفة كثرت فيها الخيانات، وصادف أن كان الإمام فيصل بن تركي وعبد الله بن رشيد خارجين من الرياض وذاهبين بغزوة للقطيف عندما قدم شخص يخبر الإمام (فيصل) بمقتل والده الإمام (تركي بن سعود) فهم الإمام فيصل بإخبار أصحابه لكن الأمير عبد الله آل رشيد نصحه بعدم أخبارهم قائلاً له (أن بعض ربعك فواده) أي يبحثون عن الفائدة وليس لديهم مانع بقتلك. واقترح عليه أن يختار عددا من الأشخاص ممن يثق بهم ويذهبون سراً للرياض لقتل (مشاري) قاتل الإمام تركي وتم بالفعل ذهاب المجموعة وكان عبد الله آل رشيد جنباً لجنب مع الإمام فيصل وفي عملية شجاعة قامت المجموعة بدخول القصر بل وقتل مشاري آل سعود وذلك في الحادي عشر من شهر صفر 1250هـ/18 يونيو 1834م .
+
+استرداد إمارة آل علي
+استطاع الأمير عيسى بن عبيد الله آل علي استرداد إمارة جبل شمر وإخراج عبد الله بن رشيد منها في عام 1837 م، ولكن ما لبث عبد الله بن رشيد بعد بضعة أشهر أن استرد إمارة جبل شمر وفرضت على عيسى الإقامة الجبرية في القصيم، وكان آخر مناضل لاسترداد حكم آل علي وبهذا انتهى عهد آل علي ليبدأ عهد آل رشيد في حكم إمارة جبل شمر.
+
+سقوط حائل
+تولى الأمير محمد الحكم في حائل مطلع عام 1921، بعد لجوء الأمير عبد الله المتعب الرشيد (الحاكم الحادي عشر) إلى آل سعود، وكانت فترته تنذر بنهاية إمارة آل رشيد، فـعبد العزيز آل سعود جعل هدفه احتلال حائل، فشدّد حصاره عليها وخاض الأمير محمد الطلال وأهالي حائل وقبيلة شمر عدة معارك مستميتة في سبيل الدفاع عن البلد غير أن الدعم العسكري البريطاني لقوات آل سعود قد رجّح الكفة لصالح السعوديين. فسقطت حائل في يد قوات عبد العزيز آل سعود في 29 صفر 1340هـ الموافق 2 نوفمبر 1921، وبهذا انتهت 
         </p>
     </section>
 
     <footer>
-        <p>© 2026 بني شمر ♧ - واجهة برمجية متطورة وفخر تاريخي أسطوري.</p>
+        <p>© 2026 بني شمر ♧ - تطوير: عبدالله خشان & أوس الشمري.</p>
     </footer>
 
     <script>
-        // أنيميشن ظهور البطاقات عند التمرير
-        const observerOptions = {
-            threshold: 0.15
-        };
-
+        // أنيميشن ظهور البطاقات
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -487,25 +493,14 @@
                     observer.unobserve(entry.target); 
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.info-card').forEach(card => {
-            observer.observe(card);
-        });
+        document.querySelectorAll('.info-card').forEach(card => observer.observe(card));
 
-        // التمرير السلس للروابط الداخلية
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        });
+        // التنبيه بالUI الجديد
+        function showRights() {
+            alert("تنبيــه الملكيــة الفكريــة:\n\nهذا الموقع وتصميمه وواجهته البرمجية تنتمي حصراً للمبدعين:\n⭐ عبدالله خشان\n⭐ أوس الشمري\n\nيُمنع الاقتباس أو النقل دون ذكر المصدر المباشر.\nجميع الحقوق محفوظة © 2026.");
+        }
     </script>
 </body>
 </html>
